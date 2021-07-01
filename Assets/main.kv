@@ -1,0 +1,61 @@
+<CharacterBuilder>:
+    first_name: first_name
+    last_name: last_name
+    FloatLayout:
+        Label:
+            font_size: '30'
+            pos_hint: {'x':0.5 - (self.size_hint_x/2), 'y': 0.4}
+
+            text: 'Character Creation'
+
+        BoxLayout:
+            pos_hint: {'x':0, 'y': 0.7}
+            size_hint: 0.9, 0.1
+            orientation: 'horizontal'
+            Label:
+                size_hint_x: 0.3
+                text: 'First Name'
+            TextInput:
+                id: first_name
+                size_hint_x: 0.7
+
+        BoxLayout:
+            pos_hint: {'x':0, 'y': 0.6}
+            size_hint: 0.9, 0.1
+            orientation: 'horizontal'
+            Label:
+                size_hint_x: 0.3
+                text: 'Last Name'
+            TextInput:
+                id: last_name
+                size_hint_x: 0.7
+
+        BoxLayout:
+            spacing: 20
+            size_hint: 0.5, 0.1
+            pos_hint: {'x':0.5 - (self.size_hint_x/2), 'y': 0.45}
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Male'
+                CheckBox:
+                    group: 'gender'
+                    on_active:root.gender_set(self, self.active, 'Male')
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Female'
+                CheckBox:
+                    group: 'gender'
+                    on_active:root.gender_set(self, self.active, 'Female')
+
+        Button:
+            id: text_lbl
+            size_hint: 0.5, 0.1
+            pos_hint: {'x':0.5 - (self.size_hint_x/2), 'y': 0.1}
+            text: 'Done'
+            on_press:
+                root.done()
+
