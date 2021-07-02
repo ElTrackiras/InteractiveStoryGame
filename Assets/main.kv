@@ -1,3 +1,30 @@
+<HomeMenu>:
+    FloatLayout:
+        Label:
+            size: self.texture_size
+            size_hint: 1, None
+            pos_hint: {'x': 0, 'y': 0.85}
+            font_size: '30'
+            text: 'The Game Title'
+
+        Button:
+            size_hint: 0.6, 0.1
+            pos_hint: {'x': 0.5 - self.size_hint_x/2, 'y': 0.7}
+            text: 'Start'
+            on_press:
+                root.start()
+
+        Button:
+            size_hint: 0.6, 0.1
+            pos_hint: {'x': 0.5 - self.size_hint_x/2, 'y': 0.57}
+            text: 'Options'
+
+        Button:
+            size_hint: 0.5, 0.1
+            pos_hint: {'x': 0.5 - self.size_hint_x/2, 'y': 0.44}
+            text: 'Quit'
+
+
 <CharacterBuilder>:
     first_name: first_name
     last_name: last_name
