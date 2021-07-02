@@ -86,3 +86,29 @@
             on_press:
                 root.done()
 
+<Scenes>:
+    scene_body_text: scene_body_text
+    scene_grid: scene_grid
+    scene_choices_kv: scene_choices_kv
+    GridLayout:
+        cols: 1
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                id: scene_grid
+                cols: 1
+                size_hint_y: None
+                Label:
+                    id: scene_body_text
+                    size: self.texture_size
+                    text_size: root.width - root.width*0.1, None
+                    size_hint_y: None
+                    text: ""
+
+                GridLayout:
+                    id: scene_choices_kv
+                    cols: 1
+                    size_hint_y: None
+
+

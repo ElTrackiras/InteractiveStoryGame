@@ -3,6 +3,10 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.properties import ObjectProperty
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.checkbox import CheckBox
+from kivy.uix.label import Label
+from kivy.uix.button import Button
 
 Window.size = (500, 500)
 Builder.load_file('Assets/main.kv')
@@ -11,6 +15,7 @@ character_created = False
 character_first_name = None
 character_last_name = None
 character_gender = None
+scene_sequence = 0
 
 
 # This will serve as the function to load all the data once into the system.
@@ -46,7 +51,8 @@ class HomeMenu(Screen):
     def start(self):
         # Transitions to save file/continuation of the game.
         if character_created:
-            self.manager.current = 'prologue_screen'
+            self.manager.get_screen('scene_screen').display_scene()
+            self.manager.current = 'scene_screen'
         # Transitions to character creation screen
         else:
             self.manager.current = 'character_builder_screen'
@@ -70,13 +76,39 @@ class CharacterBuilder(Screen):
             with open('Assets/game_data.txt', 'w') as f:
                 f.write('CharacterExist')
 
-            self.manager.current = 'prologue_screen'
+            self.manager.current = 'scene_screen'
         else:
             print('Invalid')
 
 
-class PrologueCreation(Screen):
-    pass
+class Scenes(Screen):
+    scene_body_text = ObjectProperty(None)
+    scene_grid = ObjectProperty()
+    scene_choices_kv = ObjectProperty()
+
+    def display_scene(self):
+        print('Initialized')
+        self.scene_grid.bind(minimum_height=self.scene_grid.setter('height'))
+        scene_parsed = []
+        scene_choices = []
+
+        with open('Assets/StorySequence#' + str(scene_sequence) +'.txt', 'r') as f:
+            x = f.read().replace('\n', '')
+            scene_parsed.append(x.split('==choices==')[0])
+            scene_choices.append(x.split('==choices==')[1].split('()'))
+            print(x)
+        self.scene_body_text.text = scene_parsed[0]
+        self.scene_choices_kv.bind(minimum_height=self.scene_choices_kv.setter('height'))
+        for i in scene_choices[0]:
+            if i != '':
+                print(i)
+                choices_box = GridLayout(cols=2)
+                choices_box.bind(minimum_height=choices_box.setter('height'))
+                choice_text = Label(text=i, size_hint_x=0.9)
+                choice_checkbox = CheckBox(width=10, height=10, group='choices', size_hint_x=0.1)
+                choices_box.add_widget(choice_text)
+                choices_box.add_widget(choice_checkbox)
+                self.scene_choices_kv.add_widget(choices_box)
 
 
 class InteractiveStory(App):
@@ -85,7 +117,7 @@ class InteractiveStory(App):
         sm = ScreenManager()
         sm.add_widget(HomeMenu(name='home_menu_screen'))
         sm.add_widget(CharacterBuilder(name='character_builder_screen'))
-        sm.add_widget(PrologueCreation(name='prologue_screen'))
+        sm.add_widget(Scenes(name='scene_screen'))
 
         return sm
 
