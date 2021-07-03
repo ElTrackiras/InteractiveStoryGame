@@ -1,27 +1,8 @@
-    This here is a verl A long long  A long long text A long long textA long long textA long long textA A long long text A
-long long textA long long textA long long textA A long long text A long long textA long long textA long long textA A
- long long text A long long textA long long textA long long textA A long long text A long long textA long long textA
-  long long textA A long long text A long long textA long long textA long long textA A long long text A long long textA
-   long long textA long long textA A long long text A long long textA long long textA long long textA A long long
-   text A long long textA long long textA long long textA text A long long textA long long textA long long textA
-   long long textA long long textA long long textA long long textA long long
-
-This here is a verl A long long  A long long text A long long textA long long textA long long textA A long long text A
-long long textA long long textA long long textA A long long text A long long textA long long textA long long textA A
- long long text A long long textA long long textA long long textA A long long text A long long textA long long textA
-  long long textA A long long text A long long textA long long textA long long textA A long long text A long long textA
-   long long textA long long textA A long long text A long long textA long long textA long long textA A long long
-   text A long long textA long long textA long long textA text A long long textA long long textA long long textA
-   long long textA long long textA long long textA long long textA long long text
-
-This here is a verl A long long  A long long text A long long textA long long textA long long textA A long long text A
-long long textA long long textA long long textA A long long text A long long textA long long textA long long textA A
- long long text A long long textA long long textA long long textA A long long text A long long textA long long textA
-  long long textA A long long text A long long textA long long textA long long textA A long long text A long long textA
-   long long textA long long textA A long long text A long long textA long long textA long long textA A long long
-   text A long long textA long long textA long long textA text A long long textA long long textA long long textA
-   long long textA long long textA long long textA long long textA long long text
+You were raised at a small town where the breeze of air tends to soothe the buzz of the cities away. It was night and
+you and your family are celebrating your 10th birthday. Your grandfather
 
 ==choices==
-() As you are the son of ragnar, you chose death.
-() Have mercy on them! The light shall be wherever people are.
+() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.
+() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.
+() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.
+() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.

@@ -6,7 +6,6 @@ from kivy.properties import ObjectProperty
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.label import Label
-from kivy.uix.button import Button
 
 Window.size = (500, 500)
 Builder.load_file('Assets/main.kv')
@@ -75,7 +74,7 @@ class CharacterBuilder(Screen):
 
             with open('Assets/game_data.txt', 'w') as f:
                 f.write('CharacterExist')
-
+            self.manager.get_screen('scene_screen').display_scene()
             self.manager.current = 'scene_screen'
         else:
             print('Invalid')
@@ -99,12 +98,14 @@ class Scenes(Screen):
             print(x)
         self.scene_body_text.text = scene_parsed[0]
         self.scene_choices_kv.bind(minimum_height=self.scene_choices_kv.setter('height'))
+        self.scene_choices_kv.height = 500
         for i in scene_choices[0]:
             if i != '':
                 print(i)
                 choices_box = GridLayout(cols=2)
-                choices_box.bind(minimum_height=choices_box.setter('height'))
-                choice_text = Label(text=i, size_hint_x=0.9)
+                choice_text = Label(text=i, size_hint_x=0.9, size_hint_y=1)
+                choice_text.text_size = Window.width * 0.9, None
+                choice_text.size = choice_text.texture_size
                 choice_checkbox = CheckBox(width=10, height=10, group='choices', size_hint_x=0.1)
                 choices_box.add_widget(choice_text)
                 choices_box.add_widget(choice_checkbox)
