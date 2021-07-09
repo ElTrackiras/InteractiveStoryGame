@@ -6,6 +6,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.label import Label
+from functools import partial
 
 Window.size = (500, 500)
 Builder.load_file('Assets/main.kv')
@@ -84,9 +85,12 @@ class Scenes(Screen):
     scene_body_text = ObjectProperty(None)
     scene_grid = ObjectProperty()
     scene_choices_kv = ObjectProperty()
+    current_choice = None
 
     def display_scene(self):
-        print('Initialized')
+        print('display_scene function Initialized')
+        self.scene_choices_kv.clear_widgets()
+        data_loader()
         self.scene_grid.bind(minimum_height=self.scene_grid.setter('height'))
         scene_parsed = []
         scene_choices = []
@@ -95,21 +99,52 @@ class Scenes(Screen):
             x = f.read().replace('\n', '')
             scene_parsed.append(x.split('==choices==')[0])
             scene_choices.append(x.split('==choices==')[1].split('()'))
-            print(x)
-        self.scene_body_text.text = scene_parsed[0]
+
+        body_scene_raw = [scene_parsed[0].split('[]')]
+        body_scene_parsed = ''
+        for i in body_scene_raw[0]:
+            if i == 'fname':
+                body_scene_parsed += character_first_name
+            elif i == 'gender':
+                if character_gender == 'Male':
+                    body_scene_parsed += 'he'
+                else:
+                    body_scene_parsed += 'she'
+            elif i == 'br':
+                body_scene_parsed += '\n'
+            else:
+                body_scene_parsed += i
+        self.scene_body_text.text = body_scene_parsed
         self.scene_choices_kv.bind(minimum_height=self.scene_choices_kv.setter('height'))
         self.scene_choices_kv.height = 500
         for i in scene_choices[0]:
             if i != '':
-                print(i)
                 choices_box = GridLayout(cols=2)
-                choice_text = Label(text=i, size_hint_x=0.9, size_hint_y=1)
+                choice_text = Label(text=i.split('[]')[0], size_hint_x=0.9, size_hint_y=1, halign='right')
                 choice_text.text_size = Window.width * 0.9, None
                 choice_text.size = choice_text.texture_size
                 choice_checkbox = CheckBox(width=10, height=10, group='choices', size_hint_x=0.1)
+                choice_checkbox.bind(active=partial(self.checkbox_effect, i.split('[]')[1]))
                 choices_box.add_widget(choice_text)
                 choices_box.add_widget(choice_checkbox)
                 self.scene_choices_kv.add_widget(choices_box)
+
+    def checkbox_effect(self, effect, instance, value):
+        if value:
+            self.current_choice = effect
+            print(self.current_choice)
+
+    def next_scene(self):
+        global scene_sequence
+        scene_sequence += 1
+        print(scene_sequence)
+        if self.current_choice:
+            print(self.current_choice)
+            with open('Assets/PlayerChoices.txt', 'a') as f:
+                f.write(self.current_choice + '\n')
+            self.display_scene()
+        else:
+            print('No choice selected.')
 
 
 class InteractiveStory(App):
@@ -119,7 +154,6 @@ class InteractiveStory(App):
         sm.add_widget(HomeMenu(name='home_menu_screen'))
         sm.add_widget(CharacterBuilder(name='character_builder_screen'))
         sm.add_widget(Scenes(name='scene_screen'))
-
         return sm
 
 

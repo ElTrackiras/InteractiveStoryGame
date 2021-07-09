@@ -1,8 +1,16 @@
-You were raised at a small town where the breeze of air tends to soothe the buzz of the cities away. It was night and
-you and your family are celebrating your 10th birthday. Your grandfather
-
+You were raised at a small town where the breeze of air tends to soothe the buzz of the cities away. The moment was
+ under the trance of the night, you and your family are celebrating your 10th birthday.
+ []br[]
+ []br[]
+" Open your gift []fname[], you'll love it" ~your Grandpa said.
+[]br[]
+[]br[]
+"[]gender[] sure will dad."~ Your mother replied.
+[]br[]
+[]br[]
+[]br[]
+When you opened the gift, you got...
 ==choices==
-() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.
-() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.
-() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.
-() Have mercy on them! The light shall be wherever people are. Have mercy on them! The light shall be wherever people are.
+() A fluffy unicorn plush. []Unicorn
+() A hamster.[]Hamster
+() A coloring book.[]ColoringBook

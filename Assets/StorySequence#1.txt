@@ -1,0 +1,15 @@
+The only difference here is these.
+ []br[]
+ []br[]
+" Open your gift []fname[], you'll love it" ~your Grandpa said.
+[]br[]
+[]br[]
+"[]gender[] sure will dad."~ Your mother replied.
+[]br[]
+[]br[]
+[]br[]
+When you opened the gift, you got...
+==choices==
+() A corny dragon []Dragon
+() A fascination with stealth[]Stealth
+() Blue[]Blue
